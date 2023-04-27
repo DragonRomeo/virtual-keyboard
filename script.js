@@ -2,8 +2,8 @@ const bodyElement = document.querySelector('body');
 
 const createKeyboard = () => {
     bodyElement.innerHTML += `<section class="main-container">
-    <div class="input-wrapper">
-        <input type="text" placeholder="Введите текст">
+    <div class="textarea-wrapper">
+        <textarea autofocus> </textarea>
     </div>
     <div class="keyboard"></div>
     </section>`;

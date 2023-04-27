@@ -14,13 +14,13 @@ body {
   align-items: center;
 }
 
-.input-wrapper {
+.textarea-wrapper {
   display: flex;
   width: 50%;
   margin-bottom: 50px;
 }
 
-input {
+textarea {
   width: 100%;
   height: 50px;
 }
