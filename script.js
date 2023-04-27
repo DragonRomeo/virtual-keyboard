@@ -40,10 +40,22 @@ console.log(keyboard);
 
 
 const virtualKeyboard = (event) => {
+    const toggleElem = (elem) => {
+        elem.classList.add('active');
+        setTimeout(() => { 
+            elem.classList.remove('active')
+        }, 1000)
+    }
     // console.log(event.target);
     // console.log(event.target.classList);
-    if (event.target.classList.contains('keyboard__key') || event.target.classList.contains('keyboard__value')) {
+    if (event.target.classList.contains('keyboard__key')) {
         textarea.value += event.target.innerText;
+        const currentElem = document.querySelector(`.keyboard__key[data=${event.target.getAttribute('data')}`);
+        toggleElem(currentElem);
+    } else if (event.target.classList.contains('keyboard__value')) {
+        textarea.value += event.target.innerText;
+        const currentElem = document.querySelector(`.keyboard__key[data=${event.target.parentElement.getAttribute('data')}`);
+        toggleElem(currentElem);
     }
 }
 
