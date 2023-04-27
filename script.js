@@ -37,18 +37,9 @@ document.onkeydown = function (event) {
         console.log(currentKey);
         currentKey.classList.add('active');
 
-        document.onkeyup = function (event) {
-            console.log(event.code);
-            setTimeout(() => {
-                currentKey.classList.remove('active');
-            }, 2000)
-            // setTimeout(() => {
-            //     document.querySelectorAll('.keyboard__key').forEach(function (elem) {
-            //             elem.classList.remove('active');
-            //     });
-            // }, 3000)
-
-        }
+        setTimeout(() => {
+            currentKey.classList.remove('active');
+        }, 2000)
     }
 
 }
