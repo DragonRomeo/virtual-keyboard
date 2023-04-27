@@ -32,8 +32,22 @@ const fillKeyboard = () => {
 fillKeyboard();
 
 const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
-const allKeyboardElements = document.querySelectorAll('.keyboard__key');
+const keyboardElems = document.querySelectorAll('.keyboard__key');
 const textarea = document.querySelector('textarea');
+const keyboard = document.querySelector('.keyboard');
+console.log(keyboard);
+
+
+
+const virtualKeyboard = (event) => {
+    // console.log(event.target);
+    // console.log(event.target.classList);
+    if (event.target.classList.contains('keyboard__key') || event.target.classList.contains('keyboard__value')) {
+        textarea.value += event.target.innerText;
+    }
+}
+
+keyboard.addEventListener('click', virtualKeyboard);
 
 document.onkeydown = function (event) {
     if (event.repeat !== true) {
@@ -49,14 +63,13 @@ document.onkeydown = function (event) {
 }
 
 
-
 document.onkeyup = function (event) {
-    for (let i = 0; i < allKeyboardElements.length; i++) {
-        if (event.code === allKeyboardElements[i].getAttribute('data')) {
+    for (let i = 0; i < keyboardElems.length; i++) {
+        if (event.code === keyboardElems[i].getAttribute('data')) {
             setTimeout(() => {
                 console.log(event.code)
                 if (event.code !== capsLock.getAttribute('data')) {
-                    allKeyboardElements[i].classList.remove('active');
+                    keyboardElems[i].classList.remove('active');
                 }
             }, 1500)
         }
