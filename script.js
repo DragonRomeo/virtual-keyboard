@@ -32,7 +32,8 @@ const fillKeyboard = () => {
 fillKeyboard();
 
 const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
-console.log(capsLock);
+const allKeyboardElements = document.querySelectorAll('.keyboard__key');
+const textarea = document.querySelector('textarea');
 
 document.onkeydown = function (event) {
     if (event.repeat !== true) {
@@ -42,32 +43,18 @@ document.onkeydown = function (event) {
         if (event.code === 'CapsLock') {
             capsLock.classList.toggle('active');
         } else {
-            console.log(event.code);
-            console.log(`event.repeat = ${event.repeat}`)
-
             currentKey.classList.add('active');
         }
-
-        // setTimeout(() => {
-        //     if (currentKey !== capsLock) {
-        //         currentKey.classList.remove('active');
-        //     }
-
-        // }, 1000)
     }
-
 }
 
-const allKeyboardElements = document.querySelectorAll('.keyboard__key');
-console.log(allKeyboardElements);
+
 
 document.onkeyup = function (event) {
     for (let i = 0; i < allKeyboardElements.length; i++) {
         if (event.code === allKeyboardElements[i].getAttribute('data')) {
-            console.log(`совпадение найдено, ${event.code}`);
             setTimeout(() => {
-                    console.log(event.code)
-                    console.log(capsLock)
+                console.log(event.code)
                 if (event.code !== capsLock.getAttribute('data')) {
                     allKeyboardElements[i].classList.remove('active');
                 }
