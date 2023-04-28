@@ -17,19 +17,24 @@ const keyboardButtons = [
     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '🠕', 'Shift',
     'Control', 'Win', 'Alt', ' ', 'Alt', 'Control', '🠔', '🠗', '🠖'];
 
-const keyboardCode = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace',
+const keyboardCode = [
+    'Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace',
     'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Delete',
     'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Backslash', 'Enter',
     'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
     'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight'];
 
 
-const rusKeyboard = ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ',
-    'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', '\\',
-    'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.'];
+const rusKeyboard = [
+    'Ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
+    'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', 'Delete',
+    'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', '\\', 'Enter',
+    'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', '🠕', 'Shift',
+    'Control', 'Win', 'Alt', ' ', 'Alt', 'Control', '🠔', '🠗', '🠖']
 
 
-const engKeyboard = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
+const engKeyboard = [
+    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
     'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", '\\',
     'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'];
 
@@ -151,3 +156,46 @@ deleteElem.addEventListener('click', () => {
     const arr = textarea.value.split('')
     console.log(arr);
 })
+
+
+const runOnKeys = (func, ...codes) => {
+    let pressed = new Set();
+
+    document.addEventListener('keydown', function (event) {
+        pressed.add(event.code);
+
+        for (let code of codes) {
+            if (!pressed.has(code)) {
+                return;
+            }
+        }
+        pressed.clear();
+
+        func();
+    });
+
+    document.addEventListener('keyup', function (event) {
+        pressed.delete(event.code);
+    });
+}
+
+runOnKeys(
+    () => toggleLanguage(),
+    "ShiftLeft",
+    "AltLeft"
+);
+
+const isEnglish = true;
+const toggleLanguage = () => {
+    if (isEnglish) {
+        const keyboardsArr = document.querySelectorAll('.keyboard__key');
+        console.log(keyboardsArr);
+        for (let i = 0; i < keyboardsArr.length; i++) {
+            keyboardsArr[i].innerText = rusKeyboard[i];
+        }
+    }
+}
+
+// const firstBtn = document.querySelector('.keyboard__key');
+// console.log(firstBtn);
+// firstBtn.innerText = rusKeyboard[0];
