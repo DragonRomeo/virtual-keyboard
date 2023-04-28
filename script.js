@@ -10,8 +10,8 @@ const createKeyboard = () => {
 }
 createKeyboard();
 
-const keyboardButtons = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'Delete', 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", '\\', 'Enter', 'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'ArrowUp', 'Shift', 'Control', 'Meta', 'Alt', ' ', 'Alt', 'Control', 'ArrowLeft', 'ArrowDown', 'ArrowRight']
-const keyboardCode = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Backslash', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight', 'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight']
+const keyboardButtons = ['`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace', 'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'Delete', 'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", '\\', 'Enter', 'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', 'Shift', '🠕', 'Control', 'Meta', 'Alt', ' ', 'Alt', 'Control', '🠔', '🠗', '🠖']
+const keyboardCode = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace', 'Tab', 'KeyQ', 'KeyW', 'KeyE', 'KeyR', 'KeyT', 'KeyY', 'KeyU', 'KeyI', 'KeyO', 'KeyP', 'BracketLeft', 'BracketRight', 'Delete', 'CapsLock', 'KeyA', 'KeyS', 'KeyD', 'KeyF', 'KeyG', 'KeyH', 'KeyJ', 'KeyK', 'KeyL', 'Semicolon', 'Quote', 'Backslash', 'Enter', 'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ShiftRight',  'ArrowUp', 'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight']
 
 const fillKeyboard = () => {
     const keyboardElement = document.querySelector('.keyboard');
@@ -33,13 +33,39 @@ const fillKeyboard = () => {
 }
 fillKeyboard();
 
-const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
+
 const keyboardElems = document.querySelectorAll('.keyboard__key');
 const textarea = document.querySelector('textarea');
 const keyboard = document.querySelector('.keyboard');
-const deleteElem = document.querySelector('.keyboard__key[data=Delete]')
-const spaceBtn = document.querySelector('.keyboard__key[data=Space]')
-spaceBtn.classList.add('keyboard__key_space')
+
+const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
+const deleteElem = document.querySelector('.keyboard__key[data=Delete]');
+const spaceBtn = document.querySelector('.keyboard__key[data=Space]');
+const tabBtn = document.querySelector('.keyboard__key[data=Tab]');
+const leftShiftBtn = document.querySelector('.keyboard__key[data=ShiftLeft]');
+const leftCtrlBtn = document.querySelector('.keyboard__key[data=ControlLeft]');
+const backspaceBtn = document.querySelector('.keyboard__key[data=Backspace]');
+const delBtn = document.querySelector('.keyboard__key[data=Delete]');
+const enterBtn = document.querySelector('.keyboard__key[data=Enter]');
+const rightShiftBtn = document.querySelector('.keyboard__key[data=ShiftRight]');
+const rightCtrlBtn = document.querySelector('.keyboard__key[data=ControlRight]');
+const windowBtn = document.querySelector('.keyboard__key[data=MetaLeft]');
+
+spaceBtn.classList.add('keyboard__key_space');
+tabBtn.classList.add('keyboard__key_tab');
+capsLock.classList.add('keyboard__key_capslock');
+leftShiftBtn.classList.add('keyboard__key_shift');
+leftCtrlBtn.classList.add('keyboard__key_ctrl');
+
+backspaceBtn.classList.add('keyboard__key_backspace');
+delBtn.classList.add('keyboard__key_del');
+enterBtn.classList.add('keyboard__key_enter');
+
+rightShiftBtn.classList.add('keyboard__key_shift');
+rightCtrlBtn.classList.add('keyboard__key_ctrl');
+
+
+
 
 
 const virtualKeyboard = (event) => {
