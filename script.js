@@ -23,6 +23,16 @@ const keyboardCode = ['Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digi
     'ShiftLeft', 'KeyZ', 'KeyX', 'KeyC', 'KeyV', 'KeyB', 'KeyN', 'KeyM', 'Comma', 'Period', 'Slash', 'ArrowUp', 'ShiftRight',
     'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight'];
 
+
+const rusKeyboard = ['й', 'ц', 'у', 'к', 'е', 'н', 'г', 'ш', 'щ', 'з', 'х', 'ъ',
+    'ф', 'ы', 'в', 'а', 'п', 'р', 'о', 'л', 'д', 'ж', 'э', '\\',
+    'я', 'ч', 'с', 'м', 'и', 'т', 'ь', 'б', 'ю', '.'];
+
+
+const engKeyboard = ['q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
+    'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", '\\',
+    'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'];
+
 const fillKeyboard = () => {
     const keyboardElement = document.querySelector('.keyboard');
 
@@ -47,6 +57,7 @@ fillKeyboard();
 const keyboardElems = document.querySelectorAll('.keyboard__key');
 const textarea = document.querySelector('textarea');
 const keyboard = document.querySelector('.keyboard');
+
 
 const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
 const deleteElem = document.querySelector('.keyboard__key[data=Delete]');
@@ -100,12 +111,16 @@ const virtualKeyboard = (event) => {
 
 keyboard.addEventListener('click', virtualKeyboard);
 
+const arrRu = []
 document.onkeydown = function (event) {
     for (let i = 0; i < keyboardCode.length; i++) { //Цикл для проверки, есть ли нажатая клавиша на клавиатуре.
         if (event.code === keyboardCode[i]) {
             if (event.repeat !== true) {
                 const currentKey = document.querySelector(`.keyboard__key[data=${event.code}] `);
-                console.log(currentKey);
+                // console.log(currentKey);
+                // console.log(event.code);
+                arrRu.push(event.key);
+                console.log(arrRu);
 
                 if (event.code === 'CapsLock') {
                     capsLock.classList.toggle('active');
