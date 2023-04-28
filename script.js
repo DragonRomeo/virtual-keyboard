@@ -10,12 +10,19 @@ const createKeyboard = () => {
 }
 createKeyboard();
 
-const keyboardButtons = [
+const engKeyboard = [
     '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
     'Tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', 'Delete',
     'CapsLock', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", '\\', 'Enter',
     'Shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', ',', '.', '/', '🠕', 'Shift',
     'Control', 'Win', 'Alt', ' ', 'Alt', 'Control', '🠔', '🠗', '🠖'];
+
+const rusKeyboard = [
+    'Ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
+    'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', 'Delete',
+    'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', '\\', 'Enter',
+    'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', '🠕', 'Shift',
+    'Control', 'Win', 'Alt', ' ', 'Alt', 'Control', '🠔', '🠗', '🠖']
 
 const keyboardCode = [
     'Backquote', 'Digit1', 'Digit2', 'Digit3', 'Digit4', 'Digit5', 'Digit6', 'Digit7', 'Digit8', 'Digit9', 'Digit0', 'Minus', 'Equal', 'Backspace',
@@ -25,23 +32,10 @@ const keyboardCode = [
     'ControlLeft', 'MetaLeft', 'AltLeft', 'Space', 'AltRight', 'ControlRight', 'ArrowLeft', 'ArrowDown', 'ArrowRight'];
 
 
-const rusKeyboard = [
-    'Ё', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'Backspace',
-    'Tab', 'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ', 'Delete',
-    'CapsLock', 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', '\\', 'Enter',
-    'Shift', 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.', '🠕', 'Shift',
-    'Control', 'Win', 'Alt', ' ', 'Alt', 'Control', '🠔', '🠗', '🠖']
-
-
-const engKeyboard = [
-    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']',
-    'a', 's', 'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', "'", '\\',
-    'z', 'x', 'c', 'v', 'b', 'n', 'm', ',', '.', '/'];
-
 const fillKeyboard = () => {
     const keyboardElement = document.querySelector('.keyboard');
 
-    for (let i = 0; i < keyboardButtons.length; i++) {
+    for (let i = 0; i < engKeyboard.length; i++) {
         const keyBtn = document.createElement('div');
         keyBtn.classList.add('keyboard__key');
         keyboardElement.append(keyBtn);
@@ -51,7 +45,7 @@ const fillKeyboard = () => {
         keyValue.classList.add('keyboard__value');
         keyBtn.append(keyValue);
 
-        keyValue.innerText = keyboardButtons[i];
+        keyValue.innerText = engKeyboard[i];
     }
 
 
@@ -62,7 +56,6 @@ fillKeyboard();
 const keyboardElems = document.querySelectorAll('.keyboard__key');
 const textarea = document.querySelector('textarea');
 const keyboard = document.querySelector('.keyboard');
-
 
 const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
 const deleteElem = document.querySelector('.keyboard__key[data=Delete]');
@@ -91,9 +84,6 @@ rightShiftBtn.classList.add('keyboard__key_shift');
 rightCtrlBtn.classList.add('keyboard__key_ctrl');
 
 
-
-
-
 const virtualKeyboard = (event) => {
     const toggleElem = (elem) => {
         elem.classList.add('active');
@@ -113,7 +103,6 @@ const virtualKeyboard = (event) => {
         toggleElem(currentElem);
     }
 }
-
 keyboard.addEventListener('click', virtualKeyboard);
 
 const arrRu = []
@@ -135,7 +124,6 @@ document.onkeydown = function (event) {
             }
         }
     }
-
 }
 
 
@@ -185,7 +173,8 @@ runOnKeys(
     "AltLeft"
 );
 
-const isEnglish = true;
+let isEnglish = true;
+
 const toggleLanguage = () => {
     if (isEnglish) {
         const keyboardsArr = document.querySelectorAll('.keyboard__key');
@@ -193,9 +182,13 @@ const toggleLanguage = () => {
         for (let i = 0; i < keyboardsArr.length; i++) {
             keyboardsArr[i].innerText = rusKeyboard[i];
         }
+        isEnglish = false;
+    } else {
+        const keyboardsArr = document.querySelectorAll('.keyboard__key');
+        console.log(keyboardsArr);
+        for (let i = 0; i < keyboardsArr.length; i++) {
+            keyboardsArr[i].innerText = engKeyboard[i];
+        }
+        isEnglish = true;
     }
 }
-
-// const firstBtn = document.querySelector('.keyboard__key');
-// console.log(firstBtn);
-// firstBtn.innerText = rusKeyboard[0];
