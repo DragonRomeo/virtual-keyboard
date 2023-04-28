@@ -19,13 +19,17 @@ body {
 
 .textarea-wrapper {
   display: flex;
+  justify-content: center;
   width: 50%;
   margin-bottom: 50px;
 }
 
 textarea {
-  width: 100%;
-  height: 50px;
+  width: 94%;
+  height: 80px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #EEEEEE;
 }
 
 .keyboard {
@@ -35,7 +39,7 @@ textarea {
   flex-direction: row;
   flex-wrap: wrap;
   gap: 10px;
-  padding: 10px;
+  padding: 10px 10px 10px 20px;
   border-radius: 5px;
   background-color: #393E46;
 }
@@ -51,20 +55,28 @@ textarea {
   height: 50px;
   background-color: #EEEEEE;
   border: 1px solid black;
-  transition: background-color 0.5s, transform 0.5s;
+  transition: background-color 0.5s, transform 0.5s, opacity 0.5s;
+}
+
+.keyboard__key:hover {
+  cursor: pointer;
+  opacity: 0.5;
 }
 
 .keyboard__key_space {
-  width: 43.5%;
+  width: 36.5%;
 }
 
 .keyboard__key_tab {
   width: 70px;
 }
 
-.keyboard__key_capslock,
-.keyboard__key_shift {
+.keyboard__key_capslock {
   width: 85px;
+}
+
+.keyboard__key_shift {
+  width: 108px;
 }
 
 .keyboard__key_ctrl {
@@ -72,19 +84,19 @@ textarea {
 }
 
 .keyboard__key_backspace {
-  width: 90px;
+  width: 105px;
 }
 
 .keyboard__key_del {
-  width: 55px;
+  width: 87px;
 }
 
 .keyboard__key_enter {
-  width: 80px;
+  width: 72px;
 }
 
 .keyboard__key.active {
-  background-color: cadetblue;
+  background-color: #00ADB5;
   transform: scale(0.95);
 }
 
