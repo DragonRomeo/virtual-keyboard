@@ -36,7 +36,6 @@ textarea {
 
 .keyboard {
     display: flex;
-    // justify-content: center;
     width: 49%;
     border: 2px solid black;
     flex-direction: row;
@@ -45,6 +44,7 @@ textarea {
     padding: 10px 10px 10px 20px;
     border-radius: 5px;
     background-color: #393E46;
+    font-weight: 600;
 }
 
 .keyboard__key {
@@ -66,7 +66,6 @@ textarea {
 
 .keyboard__key:hover {
     cursor: pointer;
-    // background-color: #393E46;
     opacity: 0.5;
 }
 
@@ -103,7 +102,6 @@ textarea {
 
 
 .keyboard__key.active {
-    // background-color: cadetblue;
     background-color: #00ADB5;
     transform: scale(0.95);
 }
