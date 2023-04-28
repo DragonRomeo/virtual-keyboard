@@ -35,14 +35,15 @@ const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
 const keyboardElems = document.querySelectorAll('.keyboard__key');
 const textarea = document.querySelector('textarea');
 const keyboard = document.querySelector('.keyboard');
-console.log(keyboard);
+const deleteElem = document.querySelector('.keyboard__key[data=Delete]')
+console.log(deleteElem);
 
 
 
 const virtualKeyboard = (event) => {
     const toggleElem = (elem) => {
         elem.classList.add('active');
-        setTimeout(() => { 
+        setTimeout(() => {
             elem.classList.remove('active')
         }, 1000)
     }
@@ -62,16 +63,21 @@ const virtualKeyboard = (event) => {
 keyboard.addEventListener('click', virtualKeyboard);
 
 document.onkeydown = function (event) {
-    if (event.repeat !== true) {
-        const currentKey = document.querySelector(`.keyboard__key[data=${event.code}] `);
-        console.log(currentKey);
-
-        if (event.code === 'CapsLock') {
-            capsLock.classList.toggle('active');
-        } else {
-            currentKey.classList.add('active');
+    for (let i = 0; i < keyboardCode.length; i++) { //Цикл для проверки, есть ли нажатая клавиша на клавиатуре.
+        if(event.code === keyboardCode[i]){
+            if (event.repeat !== true) {
+                const currentKey = document.querySelector(`.keyboard__key[data=${event.code}] `);
+                console.log(currentKey);
+        
+                if (event.code === 'CapsLock') {
+                    capsLock.classList.toggle('active');
+                } else {
+                    currentKey.classList.add('active');
+                }
+            }
         }
     }
+    
 }
 
 
@@ -83,7 +89,7 @@ document.onkeyup = function (event) {
                 if (event.code !== capsLock.getAttribute('data')) {
                     keyboardElems[i].classList.remove('active');
                 }
-            }, 1500)
+            }, 1000)
         }
     }
 }
