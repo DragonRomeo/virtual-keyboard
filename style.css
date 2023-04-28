@@ -46,6 +46,10 @@ textarea {
   transition: background-color 0.5s, transform 0.5s;
 }
 
+.keyboard__key_space {
+  width: 48.5%;
+}
+
 .keyboard__key.active {
   background-color: cadetblue;
   transform: scale(0.95);

@@ -28,6 +28,8 @@ const fillKeyboard = () => {
 
         keyValue.innerText = keyboardButtons[i];
     }
+
+
 }
 fillKeyboard();
 
@@ -36,8 +38,8 @@ const keyboardElems = document.querySelectorAll('.keyboard__key');
 const textarea = document.querySelector('textarea');
 const keyboard = document.querySelector('.keyboard');
 const deleteElem = document.querySelector('.keyboard__key[data=Delete]')
-console.log(deleteElem);
-
+const spaceBtn = document.querySelector('.keyboard__key[data=Space]')
+spaceBtn.classList.add('keyboard__key_space')
 
 
 const virtualKeyboard = (event) => {
@@ -64,11 +66,11 @@ keyboard.addEventListener('click', virtualKeyboard);
 
 document.onkeydown = function (event) {
     for (let i = 0; i < keyboardCode.length; i++) { //Цикл для проверки, есть ли нажатая клавиша на клавиатуре.
-        if(event.code === keyboardCode[i]){
+        if (event.code === keyboardCode[i]) {
             if (event.repeat !== true) {
                 const currentKey = document.querySelector(`.keyboard__key[data=${event.code}] `);
                 console.log(currentKey);
-        
+
                 if (event.code === 'CapsLock') {
                     capsLock.classList.toggle('active');
                 } else {
@@ -77,7 +79,7 @@ document.onkeydown = function (event) {
             }
         }
     }
-    
+
 }
 
 
@@ -94,3 +96,7 @@ document.onkeyup = function (event) {
     }
 }
 
+deleteElem.addEventListener('click', () => {
+    const arr = textarea.value.split('')
+    console.log(arr);
+})
