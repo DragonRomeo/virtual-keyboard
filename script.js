@@ -135,7 +135,7 @@ document.onkeyup = function (event) {
                 if (event.code !== capsLock.getAttribute('data')) {
                     keyboardElems[i].classList.remove('active');
                 }
-            }, 1000)
+            }, 400)
         }
     }
 }
