@@ -175,20 +175,51 @@ runOnKeys(
 
 let isEnglish = true;
 
+const setLocalStorage = () => {
+    // const name = document.querySelector(".name");
+    localStorage.setItem("KeyboardLanguage", isEnglish);
+};
+window.addEventListener("beforeunload", setLocalStorage);
+
+const getLocalStorage = () => {
+    // const nameElement = document.querySelector(".name");
+    if (localStorage.getItem("KeyboardLanguage")) {
+        const localStorageValue = localStorage.getItem("KeyboardLanguage");
+        console.log(localStorageValue);
+        
+        // isEnglish = (localStorageValue === 'false');
+        console.log(`isEnglish из локал storage = ${isEnglish}`);
+        // console.log(`условие !isEnglish = ${}`)
+        if (isEnglish === true) {
+            console.log(`условие сработало!`)
+            isEnglish = (localStorageValue === 'false');
+            toggleLanguage();
+        }
+    }
+};
+window.addEventListener("load", getLocalStorage);
+
+// console.log(`isEnglish = ${isEnglish}`)
+
+
 const toggleLanguage = () => {
     if (isEnglish) {
+        console.log(`раскладка переключена на Русский`)
         const keyboardsArr = document.querySelectorAll('.keyboard__key');
-        console.log(keyboardsArr);
+        // console.log(keyboardsArr);
         for (let i = 0; i < keyboardsArr.length; i++) {
             keyboardsArr[i].innerText = rusKeyboard[i];
         }
         isEnglish = false;
     } else {
+        console.log(`раскладка переключена на Английский`)
         const keyboardsArr = document.querySelectorAll('.keyboard__key');
-        console.log(keyboardsArr);
+        // console.log(keyboardsArr);
         for (let i = 0; i < keyboardsArr.length; i++) {
             keyboardsArr[i].innerText = engKeyboard[i];
         }
         isEnglish = true;
     }
 }
+
+
