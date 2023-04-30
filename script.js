@@ -57,6 +57,7 @@ const keyboardElems = document.querySelectorAll('.keyboard__key');
 const textarea = document.querySelector('textarea');
 const keyboard = document.querySelector('.keyboard');
 
+//Keyboards special buttons
 const capsLock = document.querySelector('.keyboard__key[data=CapsLock]');
 const deleteElem = document.querySelector('.keyboard__key[data=Delete]');
 const spaceBtn = document.querySelector('.keyboard__key[data=Space]');
@@ -70,16 +71,15 @@ const rightShiftBtn = document.querySelector('.keyboard__key[data=ShiftRight]');
 const rightCtrlBtn = document.querySelector('.keyboard__key[data=ControlRight]');
 const windowBtn = document.querySelector('.keyboard__key[data=MetaLeft]');
 
+//Classlists
 spaceBtn.classList.add('keyboard__key_space');
 tabBtn.classList.add('keyboard__key_tab');
 capsLock.classList.add('keyboard__key_capslock');
 leftShiftBtn.classList.add('keyboard__key_shift');
 leftCtrlBtn.classList.add('keyboard__key_ctrl');
-
 backspaceBtn.classList.add('keyboard__key_backspace');
 delBtn.classList.add('keyboard__key_del');
 enterBtn.classList.add('keyboard__key_enter');
-
 rightShiftBtn.classList.add('keyboard__key_shift');
 rightCtrlBtn.classList.add('keyboard__key_ctrl');
 
@@ -91,8 +91,6 @@ const virtualKeyboard = (event) => {
             elem.classList.remove('active')
         }, 1000)
     }
-    // console.log(event.target);
-    // console.log(event.target.classList);
     if (event.target.classList.contains('keyboard__key')) {
         textarea.value += event.target.innerText;
         const currentElem = document.querySelector(`.keyboard__key[data=${event.target.getAttribute('data')}`);
@@ -111,8 +109,6 @@ document.onkeydown = function (event) {
         if (event.code === keyboardCode[i]) {
             if (event.repeat !== true) {
                 const currentKey = document.querySelector(`.keyboard__key[data=${event.code}] `);
-                // console.log(currentKey);
-                // console.log(event.code);
                 arrRu.push(event.key);
                 console.log(arrRu);
 
@@ -148,17 +144,14 @@ deleteElem.addEventListener('click', () => {
 
 const runOnKeys = (func, ...codes) => {
     let pressed = new Set();
-
     document.addEventListener('keydown', function (event) {
         pressed.add(event.code);
-
         for (let code of codes) {
             if (!pressed.has(code)) {
                 return;
             }
         }
         pressed.clear();
-
         func();
     });
 
@@ -176,20 +169,16 @@ runOnKeys(
 let isEnglish = true;
 
 const setLocalStorage = () => {
-    // const name = document.querySelector(".name");
     localStorage.setItem("KeyboardLanguage", isEnglish);
 };
 window.addEventListener("beforeunload", setLocalStorage);
 
 const getLocalStorage = () => {
-    // const nameElement = document.querySelector(".name");
     if (localStorage.getItem("KeyboardLanguage")) {
         const localStorageValue = localStorage.getItem("KeyboardLanguage");
         console.log(localStorageValue);
         
-        // isEnglish = (localStorageValue === 'false');
         console.log(`isEnglish из локал storage = ${isEnglish}`);
-        // console.log(`условие !isEnglish = ${}`)
         if (isEnglish === true) {
             console.log(`условие сработало!`)
             isEnglish = (localStorageValue === 'false');
@@ -199,14 +188,11 @@ const getLocalStorage = () => {
 };
 window.addEventListener("load", getLocalStorage);
 
-// console.log(`isEnglish = ${isEnglish}`)
-
 
 const toggleLanguage = () => {
     if (isEnglish) {
         console.log(`раскладка переключена на Русский`)
         const keyboardsArr = document.querySelectorAll('.keyboard__key');
-        // console.log(keyboardsArr);
         for (let i = 0; i < keyboardsArr.length; i++) {
             keyboardsArr[i].innerText = rusKeyboard[i];
         }
@@ -214,7 +200,6 @@ const toggleLanguage = () => {
     } else {
         console.log(`раскладка переключена на Английский`)
         const keyboardsArr = document.querySelectorAll('.keyboard__key');
-        // console.log(keyboardsArr);
         for (let i = 0; i < keyboardsArr.length; i++) {
             keyboardsArr[i].innerText = engKeyboard[i];
         }
