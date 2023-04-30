@@ -34,21 +34,17 @@ const keyboardCode = [
 
 const fillKeyboard = () => {
     const keyboardElement = document.querySelector('.keyboard');
-
     for (let i = 0; i < engKeyboard.length; i++) {
         const keyBtn = document.createElement('div');
         keyBtn.classList.add('keyboard__key');
         keyboardElement.append(keyBtn);
-        keyBtn.setAttribute('data', keyboardCode[i])
+        keyBtn.setAttribute('data', keyboardCode[i]);
 
         const keyValue = document.createElement('p');
         keyValue.classList.add('keyboard__value');
         keyBtn.append(keyValue);
-
         keyValue.innerText = engKeyboard[i];
     }
-
-
 }
 fillKeyboard();
 
@@ -88,7 +84,7 @@ const virtualKeyboard = (event) => {
     const toggleElem = (elem) => {
         elem.classList.add('active');
         setTimeout(() => {
-            elem.classList.remove('active')
+            elem.classList.remove('active');
         }, 1000)
     }
     if (event.target.classList.contains('keyboard__key')) {
@@ -103,7 +99,7 @@ const virtualKeyboard = (event) => {
 }
 keyboard.addEventListener('click', virtualKeyboard);
 
-const arrRu = []
+const arrRu = [];
 document.onkeydown = function (event) {
     for (let i = 0; i < keyboardCode.length; i++) { //Цикл для проверки, есть ли нажатая клавиша на клавиатуре.
         if (event.code === keyboardCode[i]) {
@@ -119,7 +115,7 @@ document.onkeydown = function (event) {
                 }
             }
         }
-    }
+    };
 }
 
 
@@ -133,11 +129,11 @@ document.onkeyup = function (event) {
                 }
             }, 400)
         }
-    }
+    };
 }
 
 deleteElem.addEventListener('click', () => {
-    const arr = textarea.value.split('')
+    const arr = textarea.value.split('');
     console.log(arr);
 })
 
