@@ -1,0 +1,116 @@
+@import url("https://fonts.googleapis.com/css2?family=Inika&family=Inter:wght@400;700&family=Montserrat&display=swap");
+* {
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  font-family: "Inika", serif;
+  background-color: #222831;
+}
+
+.main-container {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textarea-wrapper {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin-bottom: 50px;
+  align-items: center;
+  flex-direction: column;
+}
+
+textarea {
+  width: 94%;
+  height: 80px;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #EEEEEE;
+}
+
+.keyboard {
+  display: flex;
+  width: 49%;
+  border: 2px solid black;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 10px 10px 10px 20px;
+  border-radius: 5px;
+  background-color: #393E46;
+  font-weight: 600;
+}
+
+.keyboard__key {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 76px;
+  height: 42px;
+  width: 50px;
+  height: 50px;
+  background-color: #EEEEEE;
+  border: 1px solid black;
+  transition: background-color 0.5s, transform 0.5s, opacity 0.5s;
+  box-shadow: 0px 6px 6px black;
+}
+
+.keyboard__key:hover {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
+.keyboard__key_space {
+  width: 36.5%;
+}
+
+.keyboard__key_tab {
+  width: 70px;
+}
+
+.keyboard__key_capslock {
+  width: 85px;
+}
+
+.keyboard__key_shift {
+  width: 108px;
+}
+
+.keyboard__key_ctrl {
+  width: 60px;
+}
+
+.keyboard__key_backspace {
+  width: 105px;
+}
+
+.keyboard__key_del {
+  width: 87px;
+}
+
+.keyboard__key_enter {
+  width: 72px;
+}
+
+h5 {
+  color: #EEEEEE;
+  margin: 10px;
+  font-size: 16px;
+}
+
+.keyboard__key.active {
+  background-color: #00ADB5;
+  transform: scale(0.95);
+}
+
+.keyboard__value {
+  margin: 0;
+  color: #393E46;
+}/*# sourceMappingURL=style.css.map */
