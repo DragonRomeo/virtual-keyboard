@@ -180,3 +180,35 @@ const getLocalStorage = () => {
 };
 window.addEventListener('load', getLocalStorage);
 // TODO указать раскладку для переключения языка на странице!!!!!!
+// TODO добавить переключение раскладки взависимости от ввода.
+
+const checkCurrLanguage = (event) => {
+  const russianKeyboard = [
+    'Й', 'Ц', 'У', 'К', 'Е', 'Н', 'Г', 'Ш', 'Щ', 'З', 'Х', 'Ъ',
+    'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э',
+    'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю',
+  ];
+
+  const englishKeyboard = [
+    'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P',
+    'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L',
+    'Z', 'X', 'C', 'V', 'B', 'N', 'M',
+  ];
+
+  const currentKey = event.data;
+  if (isEnglish === true && typeof (currentKey) === 'string') {
+    for (let i = 0; i < russianKeyboard.length; i += 1) {
+      if ((currentKey.toLowerCase() === russianKeyboard[i].toLowerCase())) {
+        toggleLanguage();
+      }
+    }
+  } else if (isEnglish === false && typeof (currentKey) === 'string') {
+    for (let i = 0; i < englishKeyboard.length; i += 1) {
+      if ((currentKey.toLowerCase() === englishKeyboard[i].toLowerCase())) {
+        toggleLanguage();
+      }
+    }
+  }
+};
+
+textarea.addEventListener('input', checkCurrLanguage);
