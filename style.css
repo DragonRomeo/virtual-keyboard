@@ -22,6 +22,8 @@ body {
   justify-content: center;
   width: 50%;
   margin-bottom: 50px;
+  align-items: center;
+  flex-direction: column;
 }
 
 textarea {
@@ -95,6 +97,12 @@ textarea {
 
 .keyboard__key_enter {
   width: 72px;
+}
+
+h5 {
+  color: #EEEEEE;
+  margin: 10px;
+  font-size: 16px;
 }
 
 .keyboard__key.active {

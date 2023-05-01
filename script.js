@@ -3,6 +3,7 @@ const createKeyboard = () => {
   bodyElement.innerHTML += `<section class="main-container">
     <div class="textarea-wrapper">
         <textarea autofocus> </textarea>
+        <h5>Комбинация для переключения раскладки языка - shift + alt</h5>
     </div>
     <div class="keyboard"></div>
     </section>`;
