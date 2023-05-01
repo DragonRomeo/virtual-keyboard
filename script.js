@@ -95,15 +95,15 @@ const virtualKeyboard = (event) => {
 };
 keyboard.addEventListener('click', virtualKeyboard);
 
-const arrRu = [];
+// const arrRu = [];
 document.onkeydown = function (event) {
   // Цикл для проверки, есть ли нажатая клавиша на клавиатуре.
   for (let i = 0; i < keyboardCode.length; i += 1) {
     if (event.code === keyboardCode[i]) {
       if (event.repeat !== true) {
         const currentKey = document.querySelector(`.keyboard__key[data=${event.code}] `);
-        arrRu.push(event.key);
-        console.log(arrRu);
+        // arrRu.push(event.key);
+        // console.log(arrRu);
 
         if (event.code === 'CapsLock') {
           capsLock.classList.toggle('active');
@@ -119,7 +119,7 @@ document.onkeyup = function (event) {
   for (let i = 0; i < keyboardElems.length; i += 1) {
     if (event.code === keyboardElems[i].getAttribute('data')) {
       setTimeout(() => {
-        console.log(event.code);
+        // console.log(event.code);
         if (event.code !== capsLock.getAttribute('data')) {
           keyboardElems[i].classList.remove('active');
         }
@@ -137,18 +137,18 @@ const runOnKeys = (func, ...codes) => {
   const pressed = new Set();
   document.addEventListener('keydown', (event) => {
     pressed.add(event.code);
-    for (let code of codes) {
-            if (!pressed.has(code)) {
-                return;
-            }
-        }
-        pressed.clear();
-        func();
-    });
+    for (let i = 0; i < codes.length; i += 1) {
+      if (!pressed.has(codes[i])) {
+        return;
+      }
+    }
+    pressed.clear();
+    func();
+  });
 
-    document.addEventListener('keyup', function (event) {
-        pressed.delete(event.code);
-    });
+  document.addEventListener('keyup', (event) => {
+    pressed.delete(event.code);
+  });
 };
 
 runOnKeys(
@@ -167,10 +167,10 @@ window.addEventListener('beforeunload', setLocalStorage);
 const getLocalStorage = () => {
   if (localStorage.getItem('KeyboardLanguage')) {
     const localStorageValue = localStorage.getItem('KeyboardLanguage');
-    console.log(localStorageValue);
-    console.log(`isEnglish из локал storage = ${isEnglish}`);
+    // console.log(localStorageValue);
+    // console.log(`isEnglish из локал storage = ${isEnglish}`);
     if (isEnglish === true) {
-      console.log('условие сработало!')
+      // console.log('условие сработало!')
       isEnglish = (localStorageValue === 'false');
       toggleLanguage();
     }
@@ -180,14 +180,14 @@ window.addEventListener('load', getLocalStorage);
 
 const toggleLanguage = () => {
   if (isEnglish) {
-    console.log('раскладка переключена на Русский')
+    // console.log('раскладка переключена на Русский')
     const keyboardsArr = document.querySelectorAll('.keyboard__key');
     for (let i = 0; i < keyboardsArr.length; i += 1) {
       keyboardsArr[i].innerText = rusKeyboard[i];
     }
     isEnglish = false;
   } else {
-    console.log('раскладка переключена на Английский');
+    // console.log('раскладка переключена на Английский');
     const keyboardsArr = document.querySelectorAll('.keyboard__key');
     for (let i = 0; i < keyboardsArr.length; i += 1) {
       keyboardsArr[i].innerText = engKeyboard[i];
