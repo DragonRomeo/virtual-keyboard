@@ -96,7 +96,7 @@ const virtualKeyboard = (event) => {
 keyboard.addEventListener('click', virtualKeyboard);
 
 // const arrRu = [];
-document.onkeydown = function (event) {
+document.onkeydown = function press(event) {
   // Цикл для проверки, есть ли нажатая клавиша на клавиатуре.
   for (let i = 0; i < keyboardCode.length; i += 1) {
     if (event.code === keyboardCode[i]) {
@@ -115,7 +115,7 @@ document.onkeydown = function (event) {
   }
 };
 
-document.onkeyup = function (event) {
+document.onkeyup = function unPress(event) {
   for (let i = 0; i < keyboardElems.length; i += 1) {
     if (event.code === keyboardElems[i].getAttribute('data')) {
       setTimeout(() => {
@@ -123,7 +123,7 @@ document.onkeyup = function (event) {
         if (event.code !== capsLock.getAttribute('data')) {
           keyboardElems[i].classList.remove('active');
         }
-      }, 400);
+      }, 200);
     }
   }
 };
@@ -151,13 +151,31 @@ const runOnKeys = (func, ...codes) => {
   });
 };
 
+let isEnglish = true;
+
+const toggleLanguage = () => {
+  if (isEnglish) {
+    // console.log('раскладка переключена на Русский')
+    const keyboardsArr = document.querySelectorAll('.keyboard__key');
+    for (let i = 0; i < keyboardsArr.length; i += 1) {
+      keyboardsArr[i].innerText = rusKeyboard[i];
+    }
+    isEnglish = false;
+  } else {
+    // console.log('раскладка переключена на Английский');
+    const keyboardsArr = document.querySelectorAll('.keyboard__key');
+    for (let i = 0; i < keyboardsArr.length; i += 1) {
+      keyboardsArr[i].innerText = engKeyboard[i];
+    }
+    isEnglish = true;
+  }
+};
+
 runOnKeys(
   () => toggleLanguage(),
   'ShiftLeft',
   'AltLeft',
 );
-
-let isEnglish = true;
 
 const setLocalStorage = () => {
   localStorage.setItem('KeyboardLanguage', isEnglish);
@@ -177,21 +195,4 @@ const getLocalStorage = () => {
   }
 };
 window.addEventListener('load', getLocalStorage);
-
-const toggleLanguage = () => {
-  if (isEnglish) {
-    // console.log('раскладка переключена на Русский')
-    const keyboardsArr = document.querySelectorAll('.keyboard__key');
-    for (let i = 0; i < keyboardsArr.length; i += 1) {
-      keyboardsArr[i].innerText = rusKeyboard[i];
-    }
-    isEnglish = false;
-  } else {
-    // console.log('раскладка переключена на Английский');
-    const keyboardsArr = document.querySelectorAll('.keyboard__key');
-    for (let i = 0; i < keyboardsArr.length; i += 1) {
-      keyboardsArr[i].innerText = engKeyboard[i];
-    }
-    isEnglish = true;
-  }
-};
+// TODO указать раскладку для переключения языка на странице!!!!!!
