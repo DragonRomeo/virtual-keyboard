@@ -1,5 +1,2 @@
 *node_modules
-.eslintrc.js
 .prettierrc
-package-lock.json
-package.json
